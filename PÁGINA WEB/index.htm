@@ -1,0 +1,444 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+xmlns:v="urn:schemas-microsoft-com:vml"
+xmlns:o="urn:schemas-microsoft-com:office:office">
+
+<head>
+<meta http-equiv="Content-Language" content="es" />
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>INTERNET</title>
+
+<script src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"></script>
+
+<script type="text/javascript">
+function FP_preloadImgs() {
+ var d=document,a=arguments;
+ if(!d.FP_imgs) d.FP_imgs=new Array();
+ for(var i=0; i<a.length; i++) {
+  d.FP_imgs[i]=new Image;
+  d.FP_imgs[i].src=a[i];
+ }
+}
+
+(function(){
+  emailjs.init("Rqz_J0GNntXFuwdOs");
+})();
+
+function enviarFormulario(e) {
+  e.preventDefault();
+  emailjs.sendForm('service_it9fauk', 'template_gasaj1i', e.target)
+    .then(function() {
+      alert('Mensaje enviado con éxito!');
+      e.target.reset();
+    }, function(error) {
+      alert('Error al enviar: ' + JSON.stringify(error));
+    });
+}
+</script>
+
+<style type="text/css">
+.style1 { text-align: center; }
+.style2 { color: #3366FF; }
+.style3 {
+	font-family: "Times New Roman", Times, serif;
+	font-size: 50pt;
+	color: #029FC5;
+}
+.style4 { color: #FFFFFF; }
+.style6 { text-decoration: none; }
+.style7 { text-align: center; color: #FFFFFF; }
+.style8 { color: #029FC5; }
+.style9 { font-size: large; }
+
+/* FORMULARIO MINIMALISTA */
+#formEmail {
+  position: fixed;
+  bottom: 10px;
+  right: 10px;
+  background: transparent; 
+  border: none; 
+  padding: 0; 
+  font-family: Arial, sans-serif;
+  font-size: 11px;
+  color: #029FC5;
+  width: 220px;
+  z-index: 9999;
+}
+#formEmail input, #formEmail textarea {
+  width: 100%;
+  margin-bottom: 5px;
+  background: transparent; 
+  border: none; 
+  border-radius: 0;
+  color: #029FC5;
+  font-size: 11px;
+  padding: 4px 2px;
+  box-sizing: border-box;
+  outline: 1px solid #029FC5; 
+}
+#formEmail input:focus, #formEmail textarea:focus {
+  outline: 1px solid #027f9c;
+}
+#formEmail button {
+  width: 100%;
+  padding: 4px 0;
+  cursor: pointer;
+  background: #029FC5;
+  color: white;
+  border: none;
+  font-weight: bold;
+  border-radius: 2px;
+}
+#formEmail button:hover {
+  background-color: #027f9c;
+}
+
+/* --- ESTILOS DEL SLIDER --- */
+#slider-container {
+    position: relative;
+    width: 1000px;
+    height: 580px;
+    margin: 0 auto;
+    overflow: hidden;
+}
+
+.slide {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 1000px;
+    height: 580px;
+    opacity: 0;
+    transition: opacity 1.0s ease-in-out;
+    object-fit: cover;
+}
+
+.slide.active { opacity: 1; z-index: 1; }
+
+.slider-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: rgba(0, 0, 0, 0.5);
+    color: #029FC5;
+    border: none;
+    font-size: 40px;
+    padding: 10px 15px;
+    cursor: pointer;
+    z-index: 10;
+    transition: background 0.3s, color 0.3s;
+    user-select: none;
+}
+.slider-btn:hover { background-color: #029FC5; color: #FFFFFF; }
+.prev { left: 0; border-radius: 0 5px 5px 0; }
+.next { right: 0; border-radius: 5px 0 0 5px; }
+
+
+/* --- ESTILOS CORREGIDOS DEL MENÚ DESPLEGABLE --- */
+.dropdown-wrapper {
+    position: relative;
+    display: inline-block; /* Se comporta como texto, no empuja la tabla */
+    vertical-align: middle;
+}
+
+/* La lista que aparece debajo */
+.dropdown-content {
+    position: absolute;
+    background-color: rgba(0, 0, 0, 0.95);
+    min-width: 180px;
+    z-index: 9999;
+    text-align: left;
+    top: 100%; 
+    left: 50%;
+    
+    /* Animación suave */
+    opacity: 0;
+    visibility: hidden;
+    transform: translateX(-50%) translateY(-10px);
+    transition: all 0.3s ease;
+    
+    border-radius: 4px;
+    padding: 5px 0;
+}
+
+/* Puente invisible para que el ratón no pierda el foco al bajar */
+.dropdown-content::before {
+    content: "";
+    position: absolute;
+    top: -15px; /* Cubre el espacio entre el texto y el menú */
+    left: 0;
+    width: 100%;
+    height: 15px;
+    background: transparent;
+}
+
+.dropdown-content a {
+    color: #FFFFFF;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+    font-family: Arial, sans-serif;
+    font-size: 13px;
+    border-bottom: 1px solid rgba(2, 159, 197, 0.2); 
+    cursor: pointer;
+    transition: background 0.2s;
+}
+.dropdown-content a:last-child { border-bottom: none; }
+
+.dropdown-content a:hover {
+    background-color: #029FC5;
+    color: #FFFFFF;
+}
+
+/* Mostrar menú al pasar el ratón */
+.dropdown-wrapper:hover .dropdown-content {
+    opacity: 1;
+    visibility: visible;
+    transform: translateX(-50%) translateY(5px); /* Pequeño desplazamiento hacia abajo */
+}
+
+
+/* --- ESTILOS PARA EL VISOR DE TEXTO (OVERLAY) --- */
+#text-reader-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 1000px;
+    height: 580px;
+    background-color: rgba(0, 0, 0, 0.9); 
+    z-index: 100; 
+    display: none; 
+    color: white;
+    box-sizing: border-box;
+    padding: 40px;
+    text-align: justify;
+    font-family: Arial, sans-serif;
+}
+
+.reader-content {
+    display: none; 
+    height: 100%;
+    overflow-y: auto; 
+    padding-right: 15px;
+}
+
+.reader-content.active-text {
+    display: block;
+    animation: fadeIn 0.5s;
+}
+
+.reader-title {
+    color: #029FC5;
+    font-size: 28px;
+    margin-top: 0;
+    border-bottom: 2px solid #029FC5;
+    padding-bottom: 10px;
+    margin-bottom: 20px;
+}
+
+.close-btn {
+    position: absolute;
+    top: 10px;
+    right: 15px;
+    font-size: 30px;
+    color: #029FC5;
+    cursor: pointer;
+    background: none;
+    border: none;
+    transition: transform 0.3s;
+}
+.close-btn:hover { color: #fff; transform: rotate(90deg); }
+
+.reader-content::-webkit-scrollbar { width: 8px; }
+.reader-content::-webkit-scrollbar-thumb { background: #029FC5; border-radius: 4px; }
+.reader-content::-webkit-scrollbar-track { background: #111; }
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+</style>
+
+</head>
+
+<body onload="FP_preloadImgs('button88.jpg','button87.jpg')" style="background-color: #000000">
+
+<div style="position: fixed; top: 5px; left: 8px; color: #029FC5; font-family: 'Times New Roman', Times, serif; font-size: 12px; z-index: 9999;">
+	<span class="style9">Visitas: </span>
+	<span id="visitas"><span class="style9">0</span></span>
+</div>
+<script type="text/javascript">
+var v = localStorage.getItem("contador_visitas");
+if (v === null) { v = 1; } else { v = parseInt(v) + 1; }
+localStorage.setItem("contador_visitas", v);
+document.getElementById("visitas").innerHTML = v;
+</script>
+
+<div style="position: fixed; top: 5px; right: 8px; font-family: 'Times New Roman', Times, serif; font-size: 12px; z-index: 9999;">
+	<a href="trabajo pagina web.docx" style="color: #029FC5; text-decoration: none; padding: 4px 8px; border-radius: 4px; font-weight: bold;">TRABAJO</a>
+</div>
+
+<table style="width: 1200px; height: 700px" class="style2" align="center">
+	<tr>
+		<td class="style1" style="height: 50px;">
+			<strong><span class="style3">INTERNET</span></strong>
+		</td>
+	</tr>
+	<tr>
+		<td class="style1" style="height: 50px">
+			<table style="width: 1400px; height: 55px" cellspacing="0" cellpadding="0">
+				<tr class="style1">
+					<td><a href="index.htm" class="style6"><span class="style8">INICIO</span></a></td>
+					<td class="style7"><a class="style6" href="DEFINICION.htm"><span class="style4">DEFINICIÓN</span></a></td>
+					<td class="style7"><a class="style6" href="HISTORIA.htm"><span class="style4">HISTORIA</span></a></td>
+					<td class="style7"><a class="style6" href="TARJETARED.htm"><span class="style4">TARJETA DE RED</span></a></td>
+					<td class="style7"><a class="style6" href="TARJETAMODEM.htm"><span class="style4">TARJETA MODEM</span></a></td>
+					<td class="style7"><a class="style6" href="NAVEGADORES.htm"><span class="style4">NAVEGADORES</span></a></td>
+					<td class="style7"><a class="style6" href="PORTOCOLO_TCP_IP_Y_FTP.htm"><span class="style4">PROTOCOLO</span></a></td>
+					<td class="style7"><a class="style6" href="PAGINAS_WEB.htm"><span class="style4">PÁGINAS WEB</span></a></td>
+					
+                    <td class="style7">
+                        <div class="dropdown-wrapper">
+                            <a class="style6" href="FUNCIONALIDADES.htm"><span class="style4">FUNCIONALIDADES</span></a>
+                            <div class="dropdown-content">
+                                <a onclick="openReader('txt-email')">Correo Electrónico</a>
+                                <a onclick="openReader('txt-video')">Videoconferencias</a>
+                                <a onclick="openReader('txt-ecommerce')">Comercio Electrónico</a>
+                                <a onclick="openReader('txt-juegos')">Videojuegos Online</a>
+                                <a onclick="openReader('txt-social')">Redes Sociales</a>
+                                <a onclick="openReader('txt-streaming')">Streaming</a>
+                                <a onclick="openReader('txt-search')">Buscadores Web</a>
+                                <a onclick="openReader('txt-ai')">Inteligencia Artificial</a>
+                            </div>
+                        </div>
+                    </td>
+                    
+					<td class="style7"><a class="style6" href="PRIVACIDADYSEGURIDAD.htm"><span class="style4">PRIVACIDAD</span></a></td>
+				</tr>
+			</table>
+		</td>
+	</tr>
+	<tr>
+		<td class="style1" valign="top" style="height: 600px;">
+            <div id="slider-container">
+                
+                <div id="text-reader-overlay">
+                    <button class="close-btn" onclick="closeReader()">&times;</button>
+                    
+                    <div id="txt-email" class="reader-content">
+                        <h2 class="reader-title">Correo Electrónico</h2>
+                        <p>El correo electrónico (o email) es uno de los servicios más antiguos y fundamentales de Internet. Permite enviar y recibir mensajes digitales a través de la red, lo que ha transformado radicalmente la forma en que las personas y las empresas se comunican.</p>
+                        <p>Los correos electrónicos no solo son rápidos y convenientes, sino que también permiten enviar archivos adjuntos, como documentos, imágenes, videos y otros tipos de archivos. Los servicios de correo electrónico más populares hoy en día son Gmail, Outlook y Yahoo Mail.</p>
+                        <p>El correo electrónico funciona a través de un sistema de servidores y protocolos como SMTP (Simple Mail Transfer Protocol) para enviar correos, y IMAP (Internet Message Access Protocol) o POP3 (Post Office Protocol) para recibirlos.</p>
+                        <p>A pesar de su popularidad, el correo electrónico también ha sido objeto de amenazas como el spam y el phishing, por lo que es importante contar con medidas de seguridad.</p>
+                    </div>
+
+                    <div id="txt-video" class="reader-content">
+                        <h2 class="reader-title">Videoconferencias</h2>
+                        <p>Las videoconferencias han transformado la forma en que nos comunicamos a nivel profesional y personal, permitiendo a las personas interactuar cara a cara a pesar de estar a miles de kilómetros de distancia. Plataformas como Zoom, Microsoft Teams, Google Meet, y Skype han facilitado reuniones virtuales, clases en línea, consultas médicas y más.</p>
+                        <p>Las videoconferencias funcionan utilizando protocolos de transmisión de video y audio en tiempo real. A través de tecnologías como VoIP (Voice over Internet Protocol), los usuarios pueden escuchar y ver a otros participantes, compartir pantallas y colaborar en documentos en tiempo real.</p>
+                        <p>Con la pandemia de COVID-19, el uso de videoconferencias se disparó, consolidándose como una herramienta esencial para el trabajo remoto y la educación a distancia.</p>
+                    </div>
+
+                    <div id="txt-ecommerce" class="reader-content">
+                        <h2 class="reader-title">Comercio Electrónico</h2>
+                        <p>El comercio electrónico ha revolucionado la forma en que las personas compran productos y servicios. Sitios web como Amazon, eBay, AliExpress y plataformas de compras locales han permitido a los consumidores acceder a productos de todo el mundo, 24/7, sin salir de casa.</p>
+                        <p>Los sistemas de pago en línea, como PayPal, Stripe, y tarjetas de crédito, han facilitado las transacciones de forma segura, mientras que los sistemas de seguimiento permiten a los usuarios conocer el estado de su pedido en todo momento.</p>
+                        <p>Además del comercio B2C (Business to Consumer), el e-commerce ha facilitado el C2C (Consumer to Consumer) a través de plataformas como eBay o Mercado Libre.</p>
+                    </div>
+
+                    <div id="txt-juegos" class="reader-content">
+                        <h2 class="reader-title">Videojuegos en Línea</h2>
+                        <p>Los videojuegos en línea han pasado de ser una actividad marginal a convertirse en una de las formas más populares de entretenimiento en todo el mundo. Juegos como Fortnite, League of Legends, Minecraft, y Call of Duty han creado comunidades globales donde los jugadores pueden interactuar, competir y colaborar en tiempo real.</p>
+                        <p>El juego en línea utiliza servidores para conectar a jugadores, sincronizar el progreso y manejar las interacciones en tiempo real. Las conexiones a Internet de alta velocidad son cruciales para evitar el lag.</p>
+                        <p>Además de los juegos tradicionales en PC o consolas, los dispositivos móviles han dado lugar a una nueva generación de juegos en línea, con plataformas como Twitch y YouTube Gaming.</p>
+                    </div>
+
+                    <div id="txt-social" class="reader-content">
+                        <h2 class="reader-title">Redes Sociales</h2>
+                        <p>Las plataformas de chat y redes sociales se han convertido en una de las funcionalidades más comunes de Internet. Servicios como WhatsApp, Telegram, Facebook Messenger y Slack permiten la comunicación instantánea entre personas y grupos.</p>
+                        <p>Las redes sociales como Facebook, Instagram, Twitter, TikTok y LinkedIn han redefinido la interacción social en línea. Los usuarios ahora pueden compartir experiencias, fotos, videos, opiniones y noticias al instante.</p>
+                        <p>Las redes sociales también han sido una poderosa herramienta de marketing. Sin embargo, también surgen preocupaciones sobre el impacto en la privacidad de los usuarios y los riesgos de adicción.</p>
+                    </div>
+
+                    <div id="txt-streaming" class="reader-content">
+                        <h2 class="reader-title">Streaming</h2>
+                        <p>El streaming ha cambiado la manera en que consumimos contenido multimedia. Plataformas como Netflix, YouTube, Spotify y Twitch han permitido a los usuarios acceder a películas, series, música, y programas en vivo, todo sin necesidad de descargar archivos pesados.</p>
+                        <p>El streaming utiliza una tecnología que permite la transmisión de audio y video en tiempo real a través de Internet. Los proveedores de servicios de streaming almacenan el contenido en servidores.</p>
+                        <p>A lo largo de los años, el streaming ha desplazado a los medios tradicionales, como la televisión por cable y la radio, y ha dado lugar a nuevos modelos de consumo de contenido.</p>
+                    </div>
+
+                    <div id="txt-search" class="reader-content">
+                        <h2 class="reader-title">Buscadores Web</h2>
+                        <p>Los buscadores web como Google, Bing y Yahoo son herramientas esenciales para la navegación por Internet. Permiten a los usuarios encontrar información rápidamente a partir de palabras clave o frases.</p>
+                        <p>Los buscadores utilizan algoritmos complejos para indexar y clasificar las páginas web, basándose en factores como el contenido de la página, la relevancia y la autoridad de los sitios web.</p>
+                        <p>Google, el buscador más utilizado, ha revolucionado la forma en que accedemos a la información, convirtiéndose en una de las plataformas más poderosas y rentables del mundo.</p>
+                    </div>
+
+                    <div id="txt-ai" class="reader-content">
+                        <h2 class="reader-title">Inteligencia Artificial</h2>
+                        <p>La Inteligencia Artificial está cada vez más integrada en los servicios de Internet, mejorando la experiencia del usuario y la personalización. Los asistentes virtuales como Siri, Alexa y Google Assistant utilizan IA para comprender comandos de voz.</p>
+                        <p>Las plataformas de streaming también utilizan IA para realizar recomendaciones personalizadas de contenido. En la búsqueda web, Google utiliza algoritmos de IA para mejorar la relevancia de los resultados.</p>
+                        <p>Además, la IA está comenzando a desempeñar un papel importante en la automatización de procesos comerciales y la personalización de anuncios en línea.</p>
+                    </div>
+                </div>
+
+                <button class="slider-btn prev" onclick="manualSlide(-1)">&#10094;</button>
+                <button class="slider-btn next" onclick="manualSlide(1)">&#10095;</button>
+
+                <img class="slide active" src="imagenes/portada_internet_v2_clean.png" alt="Internet Global" />
+                <img class="slide" src="imagenes/internet_education_portada.png" alt="Educación Online" />
+                <img class="slide" src="imagenes/internet_blockchain_portada.png" alt="Blockchain" />
+                <img class="slide" src="imagenes/internet_ia_portada.png" alt="Inteligencia Artificial" />
+            </div>
+        </td>
+	</tr>
+</table>
+
+<form id="formEmail" onsubmit="enviarFormulario(event)">
+  <input type="text" name="from_name" placeholder="Nombre" required />
+  <input type="email" name="reply_to" placeholder="Correo" required />
+  <textarea name="message" placeholder="Mensaje" rows="3" required></textarea>
+  <button type="submit">Enviar</button>
+</form>
+
+<script type="text/javascript">
+    // SLIDER
+    var currentSlide = 0;
+    var slides = document.querySelectorAll('.slide');
+    var totalSlides = slides.length;
+    var slideInterval;
+
+    function showSlide(index) {
+        slides[currentSlide].classList.remove('active');
+        currentSlide = index;
+        if (currentSlide >= totalSlides) currentSlide = 0;
+        else if (currentSlide < 0) currentSlide = totalSlides - 1;
+        slides[currentSlide].classList.add('active');
+    }
+    function nextSlide() { showSlide(currentSlide + 1); }
+    function manualSlide(direction) {
+        showSlide(currentSlide + direction);
+        clearInterval(slideInterval);
+        slideInterval = setInterval(nextSlide, 4000);
+    }
+    slideInterval = setInterval(nextSlide, 4000);
+
+    // MENU Y VISOR
+    function openReader(contentId) {
+        document.getElementById('text-reader-overlay').style.display = 'block';
+        var contents = document.getElementsByClassName('reader-content');
+        for (var i = 0; i < contents.length; i++) {
+            contents[i].classList.remove('active-text');
+        }
+        document.getElementById(contentId).classList.add('active-text');
+    }
+    function closeReader() {
+        document.getElementById('text-reader-overlay').style.display = 'none';
+    }
+</script>
+
+</body>
+</html>
