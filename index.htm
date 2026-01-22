@@ -1,8 +1,5 @@
-﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
-"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml"
-xmlns:v="urn:schemas-microsoft-com:vml"
-xmlns:o="urn:schemas-microsoft-com:office:office">
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:v="urn:schemas-microsoft-com:vml" xmlns:o="urn:schemas-microsoft-com:office:office">
 
 <head>
 <meta http-equiv="Content-Language" content="es" />
@@ -135,38 +132,39 @@ function enviarFormulario(e) {
 .next { right: 0; border-radius: 5px 0 0 5px; }
 
 
-/* --- ESTILOS CORREGIDOS DEL MENÚ DESPLEGABLE --- */
+/* --- ESTILOS MENÚ DESPLEGABLE (Corrección de Capas) --- */
 .dropdown-wrapper {
     position: relative;
-    display: inline-block; /* Se comporta como texto, no empuja la tabla */
+    display: inline-block;
     vertical-align: middle;
+    z-index: 30000; /* Z-INDEX EXTREMO para estar encima de todo */
 }
 
-/* La lista que aparece debajo */
 .dropdown-content {
     position: absolute;
     background-color: rgba(0, 0, 0, 0.95);
     min-width: 180px;
-    z-index: 9999;
+    z-index: 30000; /* Z-INDEX EXTREMO para estar encima del texto */
     text-align: left;
     top: 100%; 
     left: 50%;
-    
-    /* Animación suave */
     opacity: 0;
     visibility: hidden;
     transform: translateX(-50%) translateY(-10px);
     transition: all 0.3s ease;
-    
     border-radius: 4px;
     padding: 5px 0;
 }
 
-/* Puente invisible para que el ratón no pierda el foco al bajar */
+/* CLASE ESPECIAL PARA OCULTAR EL MENÚ AL HACER CLICK */
+.dropdown-content.force-hidden {
+    display: none !important;
+}
+
 .dropdown-content::before {
     content: "";
     position: absolute;
-    top: -15px; /* Cubre el espacio entre el texto y el menú */
+    top: -15px;
     left: 0;
     width: 100%;
     height: 15px;
@@ -195,7 +193,7 @@ function enviarFormulario(e) {
 .dropdown-wrapper:hover .dropdown-content {
     opacity: 1;
     visibility: visible;
-    transform: translateX(-50%) translateY(5px); /* Pequeño desplazamiento hacia abajo */
+    transform: translateX(-50%) translateY(5px);
 }
 
 
@@ -206,8 +204,8 @@ function enviarFormulario(e) {
     left: 0;
     width: 1000px;
     height: 580px;
-    background-color: rgba(0, 0, 0, 0.9); 
-    z-index: 100; 
+    background-color: rgba(0, 0, 0, 0.95); 
+    z-index: 20000; /* Alto, pero menor que el menú (30000) */
     display: none; 
     color: white;
     box-sizing: border-box;
@@ -250,6 +248,7 @@ function enviarFormulario(e) {
 }
 .close-btn:hover { color: #fff; transform: rotate(90deg); }
 
+/* Scrollbar personalizada */
 .reader-content::-webkit-scrollbar { width: 8px; }
 .reader-content::-webkit-scrollbar-thumb { background: #029FC5; border-radius: 4px; }
 .reader-content::-webkit-scrollbar-track { background: #111; }
@@ -294,7 +293,7 @@ document.getElementById("visitas").innerHTML = v;
 					<td class="style7"><a class="style6" href="DEFINICION.htm"><span class="style4">DEFINICIÓN</span></a></td>
 					<td class="style7"><a class="style6" href="HISTORIA.htm"><span class="style4">HISTORIA</span></a></td>
 					<td class="style7"><a class="style6" href="TARJETARED.htm"><span class="style4">TARJETA DE RED</span></a></td>
-					<td class="style7"><a class="style6" href="TARJETAMODEM.htm"><span class="style4">TARJETA MODEM</span></a></td>
+					<td class="style7"><a class="style6" href="TARJETAMODEM.htm"><span class="style4">TARJETA MÓDEM</span></a></td>
 					<td class="style7"><a class="style6" href="NAVEGADORES.htm"><span class="style4">NAVEGADORES</span></a></td>
 					<td class="style7"><a class="style6" href="PORTOCOLO_TCP_IP_Y_FTP.htm"><span class="style4">PROTOCOLO</span></a></td>
 					<td class="style7"><a class="style6" href="PAGINAS_WEB.htm"><span class="style4">PÁGINAS WEB</span></a></td>
@@ -428,13 +427,29 @@ document.getElementById("visitas").innerHTML = v;
 
     // MENU Y VISOR
     function openReader(contentId) {
+        // 1. Mostrar el contenido
         document.getElementById('text-reader-overlay').style.display = 'block';
         var contents = document.getElementsByClassName('reader-content');
         for (var i = 0; i < contents.length; i++) {
             contents[i].classList.remove('active-text');
         }
         document.getElementById(contentId).classList.add('active-text');
+
+        // 2. LOGICA PARA CERRAR EL MENU
+        var dropdown = document.querySelector('.dropdown-content');
+        var wrapper = document.querySelector('.dropdown-wrapper');
+        
+        // Añadimos una clase que fuerza display: none
+        dropdown.classList.add('force-hidden');
+
+        // Escuchamos UNA sola vez cuando el ratón salga del área del menú
+        function onMouseLeave() {
+            dropdown.classList.remove('force-hidden');
+            wrapper.removeEventListener('mouseleave', onMouseLeave);
+        }
+        wrapper.addEventListener('mouseleave', onMouseLeave);
     }
+
     function closeReader() {
         document.getElementById('text-reader-overlay').style.display = 'none';
     }
